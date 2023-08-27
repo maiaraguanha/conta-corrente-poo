@@ -4,15 +4,21 @@ public class Main {     //Classe
 
     // Método da classe Main onde contém o código principal do programa, e onde eu interajo com a classe ContaCorrente
     public static void main(String[] args) {
+
+        //variaveis que contém os valores da conta corrente.
         String nome = "Maiara Franciely";
         String tipoConta = "Corrente";
         double saldo = 2500.00;
 
+        // conta é uma variavel de referência que armazena a referencia para a instância do objeto da classe ContaCorrente criada.
+        // new ContaCorrente cria uma instância do objeto concreto na memória com os argumentos das váriaveis nome, tipoConta e saldo
+        ContaCorrente conta = new ContaCorrente(nome, tipoConta, saldo);
+
         System.out.println("********************************************************");
         System.out.println("\nDados iniciais do cliente:");
-        System.out.println("\nNome:               " + nome);
-        System.out.println("Tipo de conta:      " + tipoConta);
-        System.out.println("Saldo:              R$  " + saldo);
+        System.out.println("\nNome:               " + conta.getNome()); // acessando a função getNome na instância do objeto na memória através da variavel de referencia.
+        System.out.println("Tipo de conta:      " + conta.getTipoConta());
+        System.out.println("Saldo:              R$  " + conta.consultarSaldo());
         System.out.println("\n********************************************************");
 
         String operacoesDoCliente = """
@@ -28,12 +34,9 @@ public class Main {     //Classe
                 
                 """;
 
-        // lerValor é um objeto instânciado ou criado da classe Scanner.
+        // lerValor é a variavel de referência que aponta para um objeto da classe Scanner.
         Scanner lerValor = new Scanner(System.in);
         int opcao = 0;
-
-        // conta é um objeto instânciado da classe ContaCorrente.
-        ContaCorrente conta = new ContaCorrente(nome, tipoConta, saldo);
 
         while (opcao != 4) {
             System.out.println(operacoesDoCliente);
